@@ -1,14 +1,16 @@
 const express = require('express');
+const apiRoutes = require('./api/routes');
+
+
 const app = express();
-app.use(express.static('build'))
+const PORT = 3001;
+
+app.use('/api', apiRoutes);
 
 app.get('/', (request, response) => {
     response.send(`Hello World`)
 })
 
-
-
-const PORT = 3001;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
 })
