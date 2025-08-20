@@ -20,8 +20,7 @@ const processAndSave = async (fileBuffer) => {
             });
 
             for (const order of user.orders) {
-
-                const dbOrder = await tx.order.upsert({
+                await tx.order.upsert({
                     where: {
                         userId_fileOrderId: {
                             userId: dbUser.id,
@@ -31,31 +30,28 @@ const processAndSave = async (fileBuffer) => {
                     update: {
                         total: parseFloat(order.total),
                         date: new Date(order.date),
+                        products: {
+                            deleteMany: {},
+                            create: order.products.map(product => ({
+                                fileProductId: product.product_id,
+                                value: parseFloat(product.value),
+                            })),
+                        }
                     },
                     create: {
                         fileOrderId: order.order_id,
                         total: parseFloat(order.total),
                         date: new Date(order.date),
                         userId: dbUser.id,
+                        products: {
+                            create: order.products.map(product => ({
+                                fileProductId: product.product_id,
+                                value: parseFloat(product.value),
+                            })),
+                        }
                     }
                 });
 
-                for (const product of order.products) {
-                    await tx.product.upsert({
-                        where: {
-                            orderId_fileProductId: {
-                                orderId: dbOrder.id,
-                                fileProductId: product.product_id,
-                            }
-                        },
-                        update: { value: parseFloat(product.value) },
-                        create: {
-                            fileProductId: product.product_id,
-                            value: parseFloat(product.value),
-                            orderId: dbOrder.id,
-                        }
-                    });
-                }
             }
         }
     });

@@ -36,6 +36,4 @@ model Product {
   value   Decimal
   order  Order @relation(fields: [orderId], references: [id])
   orderId Int
-
-  @@unique([orderId, fileProductId])
 }
