@@ -7,10 +7,8 @@ const getOrders = async (req, res, next) => {
             startDate: req.query.start_date,
             endDate: req.query.end_date,
         }
-        console.log(filters)
 
         const orders = await orderService.findOrders(filters);
-        console.log(orders)
         res.status(200).json(orders)
     } catch (error) {
         next(error)

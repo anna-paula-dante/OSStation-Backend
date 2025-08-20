@@ -4,7 +4,6 @@ const prisma = new PrismaClient();
 
 const processAndSave = async (fileBuffer) => {
     const processedData = parsingService.parseAndGroupData(fileBuffer);
-    console.log(processedData)
     await prisma.$transaction(async (tx) => {
         for (const user of processedData) {
 
