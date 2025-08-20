@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "test": ""
+    "test": "jest",
+    "test:coverage": "jest --detectOpenHandles --watchAll"
   },
   "author": "Ana Paula",
   "license": "MIT",
@@ -18,7 +19,9 @@
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
+    "jest": "^30.0.5",
     "nodemon": "^3.1.10",
-    "prisma": "^6.14.0"
+    "prisma": "^6.14.0",
+    "supertest": "^7.1.4"
   }
 }
