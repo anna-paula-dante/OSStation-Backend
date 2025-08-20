@@ -61,6 +61,50 @@ const processAndSave = async (fileBuffer) => {
     });
 };
 
+const findOrders = async (filters) => {
+    const where = {}
+
+    if (filters.orderId) {
+        where.fileOrderId = parseInt(filters.orderId, 10);
+    }
+    if (filters.startDate) {
+        where.date = { ...where.date, gte: new Date(filters.startDate) };
+    }
+    if (filters.endDate) {
+        where.date = { ...where.date, lte: new Date(filters.endDate) };
+    }
+
+    const ordersFound = await prisma.order.findMany({
+        where: where,
+        include: { user: true, products: true },
+        orderBy: { userId: 'asc' },
+    })
+
+    const usersMap = new Map();
+
+    for (const order of ordersFound) {
+        if (!usersMap.has(order.userId)) {
+            usersMap.set(order.userId, {
+                user_id: order.user.fileUserId,
+                name: order.user.name,
+                orders: [],
+            });
+        }
+
+        const userFromMap = usersMap.get(order.userId);
+        userFromMap.orders.push({
+            order_id: order.fileOrderId,
+            total: order.total.toFixed(2),
+            date: order.date.toISOString().split('T')[0],
+            products: order.products.map(product => ({
+                product_id: product.fileProductId,
+                value: product.value.toFixed(2),
+            }))
+        })
+    }
+    return Array.from(usersMap.values())
+}
+
 module.exports = {
-    processAndSave
+    processAndSave, findOrders
 };
