@@ -1,6 +1,6 @@
 const orderService = require('../services/order.service');
 
-const processFile = async (req, res) => {
+const processFile = async (req, res, next) => {
     try {
         console.log(req.file.buffer)
         if (!req.file) {
@@ -9,7 +9,7 @@ const processFile = async (req, res) => {
         await orderService.processAndSave(req.file.buffer);
         res.status(201).json({ message: 'Arquivo processado com sucesso!' });
     } catch (error) {
-        console.log(error)
+        next(error)
     }
 }
 
