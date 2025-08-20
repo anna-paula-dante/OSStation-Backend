@@ -48,6 +48,7 @@ npm install
 # Define o caminho para o arquivo do banco de dados SQLite que o Prisma irá gerenciar.
 
 DATABASE_URL="file:./prisma/dev.db"
+````
 
 4. Aplique as Migrações do Banco de Dados:
    Este comando irá ler o schema.prisma, criar o banco de dados SQLite e montar todas as tabelas necessárias.
