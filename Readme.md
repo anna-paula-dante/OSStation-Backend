@@ -1,8 +1,8 @@
-# 🚀 OS-Station - Processador de Pedidos
+# OS-Station - Processador de Pedidos
 
 Uma API REST robusta, desenvolvida com Node.js e Express, para processar, normalizar e persistir dados de pedidos a partir de arquivos de texto. A aplicação é projetada para ser cumulativa, atualizando e adicionando novos registros de forma inteligente a cada novo upload.
 
-## 🛠️ Tecnologias e Arquitetura
+## Tecnologias e Arquitetura
 
 Stack Principal: Node.js, Express.js.
 
@@ -12,7 +12,7 @@ Arquitetura: O projeto segue uma arquitetura em camadas (Controllers, Services) 
 
 Testes: Suíte de testes com Jest para testes unitários e Supertest para testes de integração de ponta a ponta da API.
 
-## ✨ Features Principais
+## Features Principais
 
 Upload de Arquivos: Endpoint para processamento de arquivos de texto (.txt) com layout de largura fixa.
 
@@ -26,7 +26,7 @@ Consulta com Filtros: Endpoint de consulta flexível para buscar pedidos por ID 
 
 Ambiente Testado: Cobertura de testes unitários e de integração para garantir a confiabilidade da lógica de negócio.
 
-## ⚙️ Como Executar o Projeto
+## Como Executar o Projeto
 
 1. Clone o repositório:
 
@@ -65,7 +65,7 @@ npm run dev
 
 O servidor estará rodando em http://localhost:3001 (ou a porta que você configurar).
 
-## 🧪 Como Rodar os Testes
+## Como Rodar os Testes
 
 Para executar todos os testes unitários e de integração:
 
