@@ -1,4 +1,4 @@
-# OS-Station - Processador de Pedidos
+# OSStation - Processador de Pedidos
 
 Uma API REST robusta, desenvolvida com Node.js e Express, para processar, normalizar e persistir dados de pedidos a partir de arquivos de texto. A aplicação é projetada para ser cumulativa, atualizando e adicionando novos registros de forma inteligente a cada novo upload.
 
