@@ -42,20 +42,20 @@ npm install
 ```
 
 3. Configure as Variáveis de Ambiente:
-   Crie um novo arquivo chamado .env na raiz do projeto com o seguinte conteúdo:
+   Crie um arquivo chamado .env na raiz do projeto, copiando o exemplo de .env.example (se houver), e defina a URL da sua API de back-end:
 
-````Snippet de código
+```Snippet de código
 # Define o caminho para o arquivo do banco de dados SQLite que o Prisma irá gerenciar.
 
-DATABASE_URL="file:./prisma/dev.db"
-````
+DATABASE_URL="file:./dev.db"
+```
 
 4. Aplique as Migrações do Banco de Dados:
    Este comando irá ler o schema.prisma, criar o banco de dados SQLite e montar todas as tabelas necessárias.
 
 ```Bash
 npx prisma migrate dev
-````
+```
 
 5. Inicie o servidor de desenvolvimento:
 
