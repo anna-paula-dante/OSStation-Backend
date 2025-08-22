@@ -6,7 +6,7 @@ Uma API REST robusta, desenvolvida com Node.js e Express, para processar, normal
 
 Stack Principal: Node.js, Express.js.
 
-ORM e Banco de Dados: Prisma como ORM para uma interação segura e tipada com o banco de dados. O banco utilizado é SQLite, garantindo portabilidade e simplicidade sem a necessidade de serviços externos.
+ORM e Banco de Dados: Prisma com ORM para uma interação segura e tipada com o banco de dados. O banco utilizado é SQLite, garantindo portabilidade e simplicidade sem a necessidade de serviços externos.
 
 Arquitetura: O projeto segue uma arquitetura em camadas (Controllers, Services) que isola as responsabilidades. A camada de acesso a dados é elegantemente gerenciada pelo Prisma Client, que substitui a necessidade de um repositório manual.
 
